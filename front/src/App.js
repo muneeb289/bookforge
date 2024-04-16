@@ -30,7 +30,7 @@ function App() {
 
   ; (async () => {
     try {
-      const res = await axios.get('/user/verifyUser');
+      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/verifyUser`);
       if (res.data.status === true) {
         // console.log(localStorage.getItem('auth'))
         setAuth(true);

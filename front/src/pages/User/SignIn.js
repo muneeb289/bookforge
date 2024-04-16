@@ -32,7 +32,7 @@ function SignIn({ onSignIn }) {
             return toast.error("Invalid email")
         }
         try {
-            const res = await axios.post('/user/login', inputData);
+            const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/user/login`, inputData);
             if (res.data.status === false) {
                 return toast.error("Invalid credentials!");
             }
