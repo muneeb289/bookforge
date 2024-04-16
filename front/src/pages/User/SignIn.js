@@ -49,9 +49,6 @@ function SignIn({ onSignIn }) {
             console.log(`from catch ${error}`);
         }
     };
-
-
-
     return (
         <>
             <Container component="main" maxWidth="xs">
