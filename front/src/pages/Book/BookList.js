@@ -33,7 +33,7 @@ function BookList() {
   const fetchData = useCallback(async () => {
     // console.log("working")
     try {
-      const res = await axios.get("/book/getAllBooks");
+      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/book/getAllBooks`);
       if (res.data.length) {
         // console.log(res.data)
         setRows(res.data.map(({ id, book_title, book_author, book_description, book_Published_Date, book_Language }) => ({ id, book_title, book_author, book_description, book_Published_Date, book_Language })));
@@ -77,7 +77,7 @@ function BookList() {
     if (isEditMode === false) {
       // console.log(inputData)
       try {
-        const res = await axios.post('/book/addBook', inputData);
+        const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/book/addBook`, inputData);
         // console.log(res.data)
         if (res.data.status === true) {
           handleClose()
@@ -90,7 +90,7 @@ function BookList() {
     } else {
       try {
         // console.log(inputData)
-        const res = await axios.patch(`/book/editBook/${inputData.book_id}`, inputData);
+        const res = await axios.patch(`${process.env.REACT_APP_BACKEND_URL}/book/editBook/${inputData.book_id}`, inputData);
         // console.log(res)
         if (res.data.status === true) {
           handleClose()
@@ -116,7 +116,7 @@ function BookList() {
       toast.warn('You have made changes.\nBefore deleting refresh the page')
     } else {
       try {
-        const res = await axios.delete(`/book/deleteBook/${e[0]}`);
+        const res = await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/book/deleteBook/${e[0]}`);
         // console.log(res)
         if (res.data.status === true) {
           fetchData()

@@ -35,7 +35,7 @@ function SignUp() {
     if (!inputData.User_Password.match(PasswordRegex)) {
       return toast.error("Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, one symbol and one number")
     }
-    await axios.post('/user/registeruser', inputData)
+    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/user/registeruser`, inputData)
       .then(res => {
         if (!res.status === 201) {
           navigate('/signup')

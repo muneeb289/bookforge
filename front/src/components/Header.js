@@ -32,7 +32,7 @@ function Header() {
 
   const logout = async () => {
     try {
-      const res = await axios.get('/user/logout')
+      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/logout`)
       // console.log(res)
       if (res.data.status === true) {
         navigate('/signin')
