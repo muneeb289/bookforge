@@ -1,25 +1,25 @@
 // source: https://github.com/mui/material-ui/blob/v5.15.15/docs/data/material/getting-started/templates/sign-in/SignIn.js#L33
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import customTheme from '../../themes/customTheme';
-import { Avatar, Button, CssBaseline, TextField, Dialog, FormControlLabel, Checkbox, Grid, Box, Typography, Container } from '@mui/material';
+import { Avatar, Button, CssBaseline, TextField, Grid, Box, Typography, Container } from '@mui/material';
 import { LockOutlined } from '@mui/icons-material';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
 
 function SignIn({ onSignIn }) {
     let navigate = useNavigate()
-    let data;
-    const [inputData, setinputData] = useState(data = {
+    let data = {
         User_Email: "",
         User_Password: "",
-    });
+    };
+    const [inputData, setinputData] = useState(data);
     axios.defaults.withCredentials = true;
     const handleInput = (event) => {
         setinputData({ ...inputData, [event.target.name]: event.target.value })

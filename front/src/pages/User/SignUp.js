@@ -2,25 +2,25 @@
 import * as React from 'react';
 import { useState } from 'react';
 import customTheme from '../../themes/customTheme';
-import { Avatar, Button, CssBaseline, TextField, FormControlLabel, CheckboxLink, Grid, Box, Typography, Container } from '@mui/material';
+import { Avatar, Button, CssBaseline, TextField, Grid, Box, Typography, Container } from '@mui/material';
 import { LockOutlined } from '@mui/icons-material';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // import { createTheme, ThemeProvider } from '@mui/material/styles';
-const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-const userNameRegex = /^(?![_\.])[a-zA-Z0-9_]{6,18}(?<![_\.])$/
+const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
+const userNameRegex = /^(?![_.])[a-zA-Z0-9_]{6,18}(?<![_.])$/
 const PasswordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,}$/
 
 function SignUp() {
   const navigate = useNavigate();
-  let data;
-  const [inputData, setinputData] = useState(data = {
+  let data = {
     User_Email: "",
     User_Password: "",
-  });
+  };
+  const [inputData, setinputData] = useState(data);
   const handleInput = (event) => {
     setinputData({ ...inputData, [event.target.name]: event.target.value })
   };

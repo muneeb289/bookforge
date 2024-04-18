@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Box, Card, Typography, TextField, Button } from '@mui/material'
+import { TextField } from '@mui/material'
 import $ from 'jquery';
 import 'datatables.net';
 import 'datatables.net-responsive';
 import "./TableforData.css";
 
 const DataTable = (props) => {
-    const { caption, icon, columns, rows, condition, handleDelete, handleEdit } = props
+    const { columns, rows, condition, handleDelete, handleEdit } = props
     const [filterRows, setfilterRows] = useState(rows)
 
     const tableRef = useRef(null);
@@ -23,8 +23,9 @@ const DataTable = (props) => {
             );
         });
         setfilterRows(temp);
-    }
-    useEffect(() => {
+    };
+
+    function initializeTable() {
         if (!initializedRef.current && tableRef.current) { // Check if DataTable is not already initialized
             const table = $(tableRef.current).DataTable({
                 responsive: true,
@@ -53,7 +54,10 @@ const DataTable = (props) => {
 
             initializedRef.current = true; // Set initialization flag
         }
-    }, [columns, filterRows, rows]); // Watch for changes in columns and rows to reinitialize if needed
+    };
+    useEffect(
+        initializeTable()
+        , [columns, filterRows, rows, handleDelete, handleEdit]); // Watch for changes in columns and rows to reinitialize if needed
     // console.log(Object.keys(rows).length)
     // console.log(Object.keys(filterRows).length)
     // console.log(initializedRef.current)    // Reset flag whenever rows change

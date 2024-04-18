@@ -1,17 +1,17 @@
 import React, { useEffect, useState, useCallback } from 'react'
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import customTheme from '../../themes/customTheme';
 import TableforData from '../../components/TableforData.js'
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField, Container, Typography, CssBaseline, Box } from '@mui/material'
-import { LocalLibrary, LockOutlined } from '@mui/icons-material';
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, Container, CssBaseline, Box } from '@mui/material'
+import { LocalLibrary } from '@mui/icons-material';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
-import { error } from 'jquery';
+// import { error } from 'jquery';
 
 
 
 function BookList() {
-  let navigate = useNavigate()
+  // let navigate = useNavigate()
   const [openDialog, setOpenDialog] = useState(false);
   const [rows, setRows] = useState([]);
   const [isEditMode, setIsEditMode] = useState(false);
@@ -30,7 +30,7 @@ function BookList() {
 
   const columns = ["ID", "Book Title", "Book Author", 'Book Description', "Published Date", "Book language"]
   axios.defaults.withCredentials = true;
-  const fetchData = useCallback(async () => {
+  const fetchData = async () => {
     // console.log("working")
     try {
       const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/book/getAllBooks`);
@@ -44,7 +44,7 @@ function BookList() {
       console.error("Error fetching data:", error);
       toast.error("Something went wrong while fetching books");
     }
-  });
+  };
   // function for adding a book:
   const handleClickOpen = () => {
     setOpenDialog(true);

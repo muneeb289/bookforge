@@ -1,11 +1,8 @@
 import './App.css';
-import React, { useEffect, useState } from 'react';
-import { BrowserRouter, Routes, Route, Navigate, Outlet, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
-import { Button } from '@mui/material';
 import customTheme from './themes/customTheme';
-import Header from './components/Header';
-import Footer from './components/Footer';
 import SignIn from './pages/User/SignIn.js';
 import SignUp from './pages/User/SignUp.js';
 import Pagenotfound from './pages/Pagenotfound.js';
