@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 // import { createTheme, ThemeProvider } from '@mui/material/styles';
 const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
-const userNameRegex = /^(?![_.])[a-zA-Z0-9_]{6,18}(?<![_.])$/
+// const userNameRegex = /^(?![_.])[a-zA-Z0-9_]{6,18}(?<![_.])$/
 const PasswordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,}$/
 
 function SignUp() {
