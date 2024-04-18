@@ -8,7 +8,7 @@ import axios from 'axios'
 
 // const pages = ['Books', 'Author', 'Contact'];
 const pages = [];
-const settings = ['Logout'];
+// const settings = ['Logout'];
 
 function Header() {
   let navigate = useNavigate();
@@ -173,11 +173,13 @@ function Header() {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleItemClick(setting)}>
-                    <Typography textAlign="center">{setting}</Typography>
-                  </MenuItem>
-                ))}
+                {/* {settings.map((setting) => ( */}
+                <MenuItem >
+                  {/* <MenuItem key={setting} > */}
+                  <Typography textAlign="center" onClick={() => handleItemClick(setting)}>Log Out</Typography>
+                  {/* <Typography textAlign="center" onClick={() => handleItemClick(setting)}>{setting}</Typography> */}
+                </MenuItem>
+                {/* ))} */}
               </Menu>
             </Box>
           </Toolbar>
