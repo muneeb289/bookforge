@@ -33,7 +33,7 @@ function App() {
         setAuth(true);
         localStorage.setItem('auth', JSON.stringify(auth));
       } else {
-        setAuth(true);
+        setAuth(false);
         // console.log(res)
         localStorage.setItem('auth', JSON.stringify(auth));
         // console.log(localStorage.getItem('auth'))

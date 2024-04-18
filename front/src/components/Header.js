@@ -36,6 +36,7 @@ function Header() {
       const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/logout`)
       // console.log(res)
       if (res.data.status === true) {
+        console.log('trigger logout func Header.js and server res is true')
         navigate('/signin')
       }
     } catch (error) {
