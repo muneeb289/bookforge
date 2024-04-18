@@ -51,7 +51,7 @@ function Header() {
   const handleItemClick = (setting) => {
     switch (setting) {
       case 'Logout':
-        return logout();
+        return logout;
       case 'Profile':
         return profile;
       default:
@@ -176,7 +176,7 @@ function Header() {
                 {/* {settings.map((setting) => ( */}
                 <MenuItem >
                   {/* <MenuItem key={setting} > */}
-                  <Typography textAlign="center" onClick={() => handleItemClick(setting)}>Log Out</Typography>
+                  <Typography textAlign="center" onClick={handleItemClick(setting)}>Log Out</Typography>
                   {/* <Typography textAlign="center" onClick={() => handleItemClick(setting)}>{setting}</Typography> */}
                 </MenuItem>
                 {/* ))} */}
