@@ -57,7 +57,7 @@ const DataTable = (props) => {
     };
     useEffect(
         initializeTable()
-        , [columns, filterRows, rows, handleDelete, handleEdit]); // Watch for changes in columns and rows to reinitialize if needed
+        , [columns, filterRows, rows]); // Watch for changes in columns and rows to reinitialize if needed
     // console.log(Object.keys(rows).length)
     // console.log(Object.keys(filterRows).length)
     // console.log(initializedRef.current)    // Reset flag whenever rows change
