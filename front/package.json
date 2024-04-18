@@ -2,7 +2,6 @@
   "name": "front",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:5000/",
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
@@ -20,7 +19,7 @@
     "react-dom": "^18.2.0",
     "react-draggable": "^4.4.6",
     "react-router-dom": "^6.22.3",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "react-toastify": "^10.0.5",
     "web-vitals": "^2.1.4",
     "yup": "^1.4.0"
@@ -53,3 +52,4 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
 }
+
