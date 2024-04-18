@@ -30,7 +30,8 @@ function Header() {
     setAnchorElUser(null);
   };
 
-  const logout = async () => {
+  async function logout() {
+    console.log('trigger logout func Header.js')
     try {
       const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/logout`)
       // console.log(res)
@@ -49,7 +50,7 @@ function Header() {
   const handleItemClick = (setting) => {
     switch (setting) {
       case 'Logout':
-        return logout;
+        return logout();
       case 'Profile':
         return profile;
       default:
