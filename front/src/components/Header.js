@@ -8,7 +8,7 @@ import axios from 'axios'
 
 // const pages = ['Books', 'Author', 'Contact'];
 const pages = [];
-// const settings = ['Logout'];
+const settings = ['Logout'];
 
 function Header() {
   let navigate = useNavigate();
@@ -30,13 +30,13 @@ function Header() {
     setAnchorElUser(null);
   };
 
-  async function logout() {
-    console.log('trigger logout func Header.js')
+  const logout = async () => {
+    console.log('log out trigger from Header.js')
     try {
       const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/logout`)
       // console.log(res)
       if (res.data.status === true) {
-        console.log('trigger logout func Header.js and server res is true')
+        console.log('log out trigger from Header.js and res.data.status === true')
         navigate('/signin')
       }
     } catch (error) {
@@ -49,6 +49,7 @@ function Header() {
 
 
   const handleItemClick = (setting) => {
+    console.log(`log from handleItemClick ${setting}`)
     switch (setting) {
       case 'Logout':
         return logout;
@@ -173,13 +174,11 @@ function Header() {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                {/* {settings.map((setting) => ( */}
-                <MenuItem >
-                  {/* <MenuItem key={setting} > */}
-                  <Typography textAlign="center" onClick={handleItemClick(setting)}>Log Out</Typography>
-                  {/* <Typography textAlign="center" onClick={() => handleItemClick(setting)}>{setting}</Typography> */}
-                </MenuItem>
-                {/* ))} */}
+                {settings.map((setting) => (
+                  <MenuItem key={setting} >
+                    <Typography textAlign="center" onClick={(setting) => handleItemClick(setting)}>{setting}</Typography>
+                  </MenuItem>
+                ))}
               </Menu>
             </Box>
           </Toolbar>
