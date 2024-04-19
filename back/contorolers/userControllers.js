@@ -81,6 +81,7 @@ const verifyUser = async (req, res) => {
 }
 
 const logout = async (req, res) => {
+    console.log('log from back end /user/logout')
     // res.clearCookie('token')
     // res.json({status: true})
 }
