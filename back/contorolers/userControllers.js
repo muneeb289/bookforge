@@ -80,10 +80,10 @@ const verifyUser = async (req, res) => {
     }
 }
 
-// const logout = async (req, res) => {
-//     res.clearCookie('token')
-//     res.json({status: true})
-// }
+const logout = async (req, res) => {
+    // res.clearCookie('token')
+    // res.json({status: true})
+}
 
 
 
