@@ -66,6 +66,7 @@ const login = async (req, res) => {
 };
 
 const verifyUser = async (req, res) => {
+    console.log(req.cookies)
     try {
         const token = req.cookies.token;
         // console.log(`line 66 ${token}`)
