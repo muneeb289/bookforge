@@ -36,7 +36,7 @@ function SignIn({ onSignIn }) {
             if (res.data.status === false) {
                 return toast.error("Invalid credentials!");
             }
-            if (res.status === 200) {
+            if (res.data.status === true) {
                 // console.log("hello")
                 // Call the callback function passed from App.js
                 onSignIn();
