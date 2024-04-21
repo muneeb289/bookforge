@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route, Navigate, } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
 import customTheme from './themes/customTheme';
 import Layout from './pages/Layout/Layout.js';
@@ -8,19 +8,17 @@ import SignIn from './pages/User/SignIn.js';
 import SignUp from './pages/User/SignUp.js';
 import Pagenotfound from './pages/Pagenotfound.js';
 import BookList from './pages/Book/BookList.js';
+import AuthorList from './pages/Author/AuthorList.js';
 import axios from 'axios';
 
 function App() {
 
-  // const [auth, setAuth] = useState(false);
   axios.defaults.withCredentials = true;
 
-  const [auth, setAuth] = useState(() => {
-    const savedAuth = localStorage.getItem('auth');
-    return savedAuth ? JSON.parse(savedAuth) : false;
-  });
   const handleSignIn = () => {
-    setAuth(true);
+    console.log(localStorage.getItem('auth'))
+    localStorage.setItem('auth', JSON.stringify(true));
+    console.log(localStorage.getItem('auth'))
   };
 
   // ; (async () => {
@@ -29,13 +27,12 @@ function App() {
   //     if (res.data.status === true) {
   //       console.log(localStorage.getItem('auth'))
   //       setAuth(true);
-  //       localStorage.setItem('auth', JSON.stringify(auth));
+  //       localStorage.setItem('auth', JSON.stringify(true));
   //       console.log(localStorage.getItem('auth'))
   //     } else {
-  //       setAuth(false);
   //       console.log(res)
   //       console.log(localStorage.getItem('auth'))
-  //       localStorage.setItem('auth', JSON.stringify(auth));
+  //       localStorage.setItem('auth', JSON.stringify(false));
   //       console.log(localStorage.getItem('auth'))
   //     }
   //   } catch (error) {
@@ -44,9 +41,9 @@ function App() {
   // })()
 
   const PrivateRoutes = () => {
-    console.log(`from line 46 of App.js ${auth}`)
+    console.log(`from line 46 of App.js ${JSON.parse(localStorage.getItem('auth'))}`)
     return (
-      auth ? <Layout /> : <Navigate to='/signin' />
+      JSON.parse(localStorage.getItem('auth')) === true ? <Layout /> : <Navigate to='/signin' />
     );
   };
 
@@ -54,14 +51,14 @@ function App() {
     <ThemeProvider theme={customTheme}>
       <BrowserRouter>
         <Routes>
-          <Route path='/signin' element={<SignIn onSignIn={handleSignIn} />} />
-          <Route path='/signup' element={<SignUp />} />
-
           <Route element={<PrivateRoutes />}>
             {/* Add protected or private route here */}
             <Route path='/' element={<BookList />} />
+            <Route path='/authorList' element={<AuthorList />} />
 
           </Route>
+          <Route path='/signin' element={<SignIn onSignIn={handleSignIn} />} />
+          <Route path='/signup' element={<SignUp />} />
           <Route path='/*' element={<Pagenotfound />} />
         </Routes>
       </BrowserRouter>
