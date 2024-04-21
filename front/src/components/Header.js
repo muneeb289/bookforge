@@ -35,6 +35,7 @@ function Header() {
       const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/logout`)
       // console.log(res)
       if (res.data.status === true) {
+        localStorage.setItem('auth', JSON.stringify(false));
         navigate('/signin')
       }
     } catch (error) {

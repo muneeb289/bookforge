@@ -1,10 +1,10 @@
 // source: https://github.com/mui/material-ui/blob/v5.15.15/docs/data/material/getting-started/templates/sign-in/SignIn.js#L33
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import customTheme from '../../themes/customTheme';
-import { Avatar, Button, CssBaseline, TextField, Dialog, FormControlLabel, Checkbox, Grid, Box, Typography, Container } from '@mui/material';
+import { Avatar, Button, CssBaseline, TextField, Grid, Box, Typography, Container } from '@mui/material';
 import { LockOutlined } from '@mui/icons-material';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
