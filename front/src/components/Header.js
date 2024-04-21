@@ -30,31 +30,32 @@ function Header() {
     setAnchorElUser(null);
   };
 
-  const logout = async () => {
-    console.log('log out trigger from Header.js')
-    try {
-      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/logout`)
-      // console.log(res)
-      if (res.data.status === true) {
-        console.log('log out trigger from Header.js and res.data.status === true')
-        navigate('/signin')
+  const Logout = () => {
+    // console.log('log out trigger from Header.js');
+    (async () => {
+      try {
+        const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/logout`);
+        if (res.data.status === true) {
+          // console.log('log out trigger from Header.js and res.data.status === true');
+          navigate('/signin');
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error)
-    }
-  }
-  const profile = async () => {
-    console.log("I am profile")
-  }
+    })();
+  };
+
 
 
   const handleItemClick = (setting) => {
     console.log(`log from handleItemClick ${setting}`)
     switch (setting) {
       case 'Logout':
-        return logout;
-      case 'Profile':
-        return profile;
+        return Logout();
+      // return console.log('Log out cicked called');
+      // case 'Profile':
+      //   // return profile;
+      //   return console.log('profile cicked called');
       default:
         return handleCloseUserMenu;
     }
@@ -175,8 +176,9 @@ function Header() {
                 onClose={handleCloseUserMenu}
               >
                 {settings.map((setting) => (
+                  // <MenuItem key={setting} onClick={() => handleItemClick(setting)}>
                   <MenuItem key={setting} >
-                    <Typography textAlign="center" onClick={(setting) => handleItemClick(setting)}>{setting}</Typography>
+                    <Typography textAlign="center" onClick={() => handleItemClick(setting)}>{setting}</Typography>
                   </MenuItem>
                 ))}
               </Menu>
