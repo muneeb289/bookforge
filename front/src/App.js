@@ -15,7 +15,7 @@ function App() {
   // let navigate = useNavigate()
 
   const [auth, setAuth] = useState(false);
-  axios.defaults.withCredentials = true;
+  // axios.defaults.withCredentials = true;
 
   // const [auth, setAuth] = useState(() => {
   //   const savedAuth = localStorage.getItem('auth');
@@ -61,16 +61,10 @@ function App() {
           <Route element={<PrivateRoutes />}>
             <Route path='/' element={<BookList />} />
             <Route path='/authorlist' element={<AuthorList />} />
-
-
           </Route>
-
-
           <Route path='/*' element={<Pagenotfound />} />
-
         </Routes>
       </BrowserRouter>
-
     </ThemeProvider>
   );
 }

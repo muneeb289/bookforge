@@ -20,7 +20,7 @@ function SignIn({ onSignIn }) {
         User_Password: "",
     };
     const [inputData, setinputData] = useState(data);
-    axios.defaults.withCredentials = true;
+    // axios.defaults.withCredentials = true;
     const handleInput = (event) => {
         setinputData({ ...inputData, [event.target.name]: event.target.value })
     };

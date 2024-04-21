@@ -29,7 +29,7 @@ function BookList() {
 
 
   const columns = ["ID", "Book Title", "Book Author", 'Book Description', "Published Date", "Book language"]
-  axios.defaults.withCredentials = true;
+  // axios.defaults.withCredentials = true;
   const fetchData = async () => {
     // console.log("working")
     try {
