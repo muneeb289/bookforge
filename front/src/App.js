@@ -14,35 +14,35 @@ import AuthorList from './pages/Author/AuthorList.js';
 function App() {
   // let navigate = useNavigate()
 
-  // const [auth, setAuth] = useState(false);
+  const [auth, setAuth] = useState(false);
   axios.defaults.withCredentials = true;
 
-  const [auth, setAuth] = useState(() => {
-    const savedAuth = localStorage.getItem('auth');
-    return savedAuth ? JSON.parse(savedAuth) : false;
-  });
+  // const [auth, setAuth] = useState(() => {
+  //   const savedAuth = localStorage.getItem('auth');
+  //   return savedAuth ? JSON.parse(savedAuth) : false;
+  // });
   const handleSignIn = () => {
     setAuth(true);
   };
 
-  ; (async () => {
-    try {
-      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/verifyUser`);
-      if (res.data.status === true) {
-        // console.log(localStorage.getItem('auth'))
-        setAuth(true);
-        localStorage.setItem('auth', JSON.stringify(auth));
-      } else {
-        setAuth(false);
-        // console.log(res)
-        localStorage.setItem('auth', JSON.stringify(auth));
-        // console.log(localStorage.getItem('auth'))
-        // localStorage.setItem('auth', JSON.stringify(auth));
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  })()
+  // ; (async () => {
+  //   try {
+  //     const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/verifyUser`);
+  //     if (res.data.status === true) {
+  //       console.log(localStorage.getItem('auth'))
+  //       setAuth(true);
+  //       localStorage.setItem('auth', JSON.stringify(auth));
+  //       console.log(localStorage.getItem('auth'))
+  //     } else {
+  //       setAuth(false);
+  //       console.log(res)
+  //       localStorage.setItem('auth', JSON.stringify(auth));
+  //       console.log(localStorage.getItem('auth'))
+  //     }
+  //   } catch (error) {
+  //     console.error('Error:', error);
+  //   }
+  // })()
 
   const PrivateRoutes = () => {
     // console.log(auth)
