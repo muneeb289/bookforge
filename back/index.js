@@ -18,9 +18,10 @@ const app = express()
 app.use(cors(
     {
         // origin: "http://localhost:3000",
-        origin: ["https://muneeb289.netlify.app"],
-        methods: ["GET", "POST", "DELETE","PATCH"],
-    credentials: true
+        // origin: ["https://muneeb289.netlify.app"],
+        origin: ["https://muneeb289.vercel.app", "http://localhost:3000", "https://muneeb289.netlify.app"],
+        methods: ["GET", "POST", "DELETE", "PATCH"],
+        credentials: true
     }
 ))
 app.use(bodyParser.json())
