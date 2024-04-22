@@ -227,7 +227,7 @@ function BookList() {
                   required
                   fullWidth
                   name="book_Published_Date"
-                  label="Book Published Date"
+                  label="Book Published Date: Format: 'yyyy'"
                   value={inputData.book_Published_Date}
                   id="book_Published_Date"
                   onChange={handleInput}
