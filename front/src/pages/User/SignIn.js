@@ -15,11 +15,11 @@ const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
 
 function SignIn({ onSignIn }) {
     let navigate = useNavigate()
-    let data;
-    const [inputData, setinputData] = useState(data = {
+    let data = {
         User_Email: "",
         User_Password: "",
-    });
+    };
+    const [inputData, setinputData] = useState(data);
     axios.defaults.withCredentials = true;
     const handleInput = (event) => {
         setinputData({ ...inputData, [event.target.name]: event.target.value })

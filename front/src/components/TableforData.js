@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { TextField } from '@mui/material'
+// import { TextField } from '@mui/material'
 import $ from 'jquery';
 import 'datatables.net';
 import 'datatables.net-responsive';
@@ -35,7 +35,7 @@ const DataTable = (props) => {
                     }
                 ],
                 lengthMenu: [[10, 25, 50, -1], [10, 25, 50, 'All']],
-                searching: false, // Disable the search bar
+                // searching: false, // Disable the search bar
                 // caption: caption,
             });
             // Define edit and delete button click event handlers
@@ -59,13 +59,13 @@ const DataTable = (props) => {
     // console.log(initializedRef.current)    // Reset flag whenever rows change
     return (
         <div style={{ width: '90%', margin: "auto" }} >
-            <TextField
+            {/* <TextField
                 label={`Search...`}
                 type="search"
                 size='small'
                 onChange={(e) => setfilterRowss(e.target.value)}
                 sx={{ width: { sx: "100%" }, }}
-            />
+            /> */}
 
             <table id='example' ref={tableRef} className="display nowrap" style={{ width: '100%', margin: "auto" }}>
                 <thead>
