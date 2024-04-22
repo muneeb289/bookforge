@@ -21,23 +21,23 @@ function App() {
     console.log(localStorage.getItem('auth'))
   };
 
-  ; (async () => {
-    try {
-      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/verifyUser`);
-      if (res.data.status === true) {
-        console.log(localStorage.getItem('auth'))
-        localStorage.setItem('auth', JSON.stringify(true));
-        console.log(localStorage.getItem('auth'))
-      } else {
-        console.log(res)
-        console.log(localStorage.getItem('auth'))
-        localStorage.setItem('auth', JSON.stringify(false));
-        console.log(localStorage.getItem('auth'))
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  })()
+  // ; (async () => {
+  //   try {
+  //     const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/verifyUser`);
+  //     if (res.data.status === true) {
+  //       console.log(localStorage.getItem('auth'))
+  //       localStorage.setItem('auth', JSON.stringify(true));
+  //       console.log(localStorage.getItem('auth'))
+  //     } else {
+  //       console.log(res)
+  //       console.log(localStorage.getItem('auth'))
+  //       localStorage.setItem('auth', JSON.stringify(false));
+  //       console.log(localStorage.getItem('auth'))
+  //     }
+  //   } catch (error) {
+  //     console.error('Error:', error);
+  //   }
+  // })()
 
   const PrivateRoutes = () => {
     console.log(`from line 46 of App.js ${JSON.parse(localStorage.getItem('auth'))}`)
