@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import customTheme from '../../themes/customTheme';
-// import DataTable from '../../components/TableforData.js'
+import DataTable from '../../components/TableforData.js'
 import { Button, Dialog, DialogActions, DialogContent,  DialogTitle, TextField, Container, CssBaseline, Box } from '@mui/material'
 import { LocalLibrary} from '@mui/icons-material';
 import axios from 'axios';
@@ -167,7 +167,7 @@ function BookList() {
         <h1 >{<LocalLibrary />} Book list</h1>
         <Button style={{ color: customTheme.palette.button.secondary, }} onClick={handleClickOpen}>Add Book</Button>
       </div>
-      {/* {rows.length > 0 && <DataTable caption={'Book list page'} icon={LocalLibrary} columns={columns} rows={rows} condition={doInitializeTable} handleDelete={handleDelete} handleEdit={handleEdit} />} */}
+      {rows.length > 0 && <DataTable caption={'Book list page'} icon={LocalLibrary} columns={columns} rows={rows} condition={doInitializeTable} handleDelete={handleDelete} handleEdit={handleEdit} />}
 
 
       <Dialog
