@@ -44,6 +44,9 @@ const Book = sequelize.define('Book', {
     validate: {
       isInt: true,
       isFourDigitNumber(value) {
+        if (value.toString() < 1) {
+          throw new Error('Published year value must be a valid year.');
+        }
         if (value.toString().length !== 4) {
           throw new Error('Published year value must be a four-digit number.');
         }
