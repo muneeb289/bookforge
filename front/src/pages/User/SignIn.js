@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 // import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
 
 function SignIn({ onSignIn }) {
     let navigate = useNavigate()

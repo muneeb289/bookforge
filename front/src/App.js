@@ -16,9 +16,9 @@ function App() {
   axios.defaults.withCredentials = true;
 
   const handleSignIn = () => {
-    console.log(localStorage.getItem('auth'))
+    // console.log(localStorage.getItem('auth'))
     localStorage.setItem('auth', JSON.stringify(true));
-    console.log(localStorage.getItem('auth'))
+    // console.log(localStorage.getItem('auth'))
   };
 
   // ; (async () => {
@@ -41,7 +41,7 @@ function App() {
   // })()
 
   const PrivateRoutes = () => {
-    console.log(`from line 46 of App.js ${JSON.parse(localStorage.getItem('auth'))}`)
+    // console.log(`from line 46 of App.js ${JSON.parse(localStorage.getItem('auth'))}`)
     return (
       JSON.parse(localStorage.getItem('auth')) === true ? <Layout /> : <Navigate to='/signin' />
     );
