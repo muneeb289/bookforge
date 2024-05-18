@@ -137,33 +137,46 @@ const DataTable = (props) => {
     const dataTableRef = useRef(null);
 
     useEffect(() => {
-        if (tableRef.current) {
-            if ($.fn.dataTable.isDataTable(tableRef.current)) {
-                $(tableRef.current).DataTable().clear().rows.add(rows).draw();
-            } else {
-                dataTableRef.current = $(tableRef.current).DataTable({
-                    responsive: true,
-                    columnDefs: [
-                        {
-                            targets: [-2, -1],
-                            orderable: false
-                        }
-                    ],
-                    lengthMenu: [[10, 25, 50, -1], [10, 25, 50, 'All']],
-                });
-
-                $(tableRef.current).on('click', '.editBtn', function () {
-                    const data = dataTableRef.current.row($(this).closest('tr')).data();
-                    handleEdit(data);
-                });
-
-                $(tableRef.current).on('click', '.deleteBtn', function () {
-                    const data = dataTableRef.current.row($(this).closest('tr')).data();
-                    handleDelete(data);
-                });
+        const columnDefs = columns.map((column, index) => ({
+            title: column,
+            data: column.toLowerCase().replace(' ', '_'), // Match your data property names
+        })).concat([
+            {
+                title: 'Edit',
+                data: null,
+                defaultContent: '<button class="editBtn">Edit</button>',
+                orderable: false,
+            },
+            {
+                title: 'Delete',
+                data: null,
+                defaultContent: '<button class="deleteBtn">Delete</button>',
+                orderable: false,
             }
+        ]);
+
+        if ($.fn.dataTable.isDataTable(tableRef.current)) {
+            const table = $(tableRef.current).DataTable();
+            table.clear().rows.add(rows).draw();
+        } else {
+            dataTableRef.current = $(tableRef.current).DataTable({
+                data: rows,
+                columns: columnDefs,
+                responsive: true,
+                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, 'All']],
+            });
+
+            $(tableRef.current).on('click', '.editBtn', function () {
+                const data = dataTableRef.current.row($(this).closest('tr')).data();
+                handleEdit(data);
+            });
+
+            $(tableRef.current).on('click', '.deleteBtn', function () {
+                const data = dataTableRef.current.row($(this).closest('tr')).data();
+                handleDelete(data);
+            });
         }
-    }, [rows, handleDelete, handleEdit]);
+    }, [rows, columns, handleDelete, handleEdit]);
 
     return (
         <div style={{ width: '90%', margin: "auto" }}>
@@ -180,8 +193,8 @@ const DataTable = (props) => {
                 <tbody>
                     {Array.isArray(rows) && rows.map((row, rowIndex) => (
                         <tr key={rowIndex}>
-                            {Object.values(row).map((cell, cellIndex) => (
-                                <td key={cellIndex}>{cell}</td>
+                            {columns.map((column, columnindex) => (
+                                <td key={columnindex}>{row[column.toLowerCase().replace(' ', '_')]}</td>
                             ))}
                             <td><button className="editBtn">Edit</button></td>
                             <td><button className="deleteBtn">Delete</button></td>
